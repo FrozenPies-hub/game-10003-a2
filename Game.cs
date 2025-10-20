@@ -94,10 +94,20 @@ namespace MohawkGame2D
                     frameCounter = 0;
                 }
             }
+            
             if (Input.IsMouseButtonPressed(MouseInput.Left))
             {
-                Stars();
+                if (autoUpdate == false)
+                {
+                    autoUpdate = true;
+                }
+                else
+                {
+                    autoUpdate = false;
+                }
             }
+            Stars();
+            
             DudeChillin();
         }
     }
