@@ -2,7 +2,7 @@
 using System.Numerics;
 
 namespace MohawkGame2D
-{ 
+{
     public class Game
     {
         System.Random rnd = new System.Random();
@@ -19,6 +19,7 @@ namespace MohawkGame2D
         int frameCounter = 0;
 
         bool autoUpdate = true;
+
 
         public void Setup()
         {
@@ -43,6 +44,18 @@ namespace MohawkGame2D
             }
 
             starsGenerated = true;
+        }
+
+        public void Stars()
+        {
+            if (starsGenerated)
+            {
+                for (int i = 0; i < StarCount; i++)
+                {
+                    Draw.FillColor = new Color(255, 255, 227);
+                    Draw.Circle(starXPosition[i], starYPosition[i], 5);
+                }
+            }
         }
 
         public void DudeChillin()
@@ -81,16 +94,10 @@ namespace MohawkGame2D
                     frameCounter = 0;
                 }
             }
-
-            if (starsGenerated)
+            if (Input.IsMouseButtonPressed(MouseInput.Left))
             {
-            for (int i = 0; i < StarCount; i++)
-                {
-                    Draw.FillColor = new Color(255, 255, 227);
-                    Draw.Circle(starXPosition[i], starYPosition[i], 5);
-                }
+                Stars();
             }
-            
             DudeChillin();
         }
     }
